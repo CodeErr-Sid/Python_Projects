@@ -19,6 +19,8 @@ HARD_LEVEL = 5
 
 
 def check_answer(user_guess, answer, turns):
+  # if turns == 0:
+  #
   if user_guess > answer:
     print("Too High !")
     return turns-1
@@ -48,10 +50,14 @@ def play():
   answer = random.randint(1,100)
   
   user_guess = 0
+
   while user_guess != answer:
-    
-    user_guess =int(input("\nEnter Your Guess: "))
-    turns = check_answer(user_guess, answer, turns)
-    print(f"\nYou Have {turns} attempts left.")
+    if turns != 0:
+     user_guess =int(input("\nEnter Your Guess: "))
+     turns = check_answer(user_guess, answer, turns)
+     print(f"\nYou Have {turns} attempts left.")
+    else:
+      print("Game Over!")
+      break
 
 play()
